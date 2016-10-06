@@ -1,0 +1,20 @@
+{
+  "current_page": 7,
+  "last_page": 7,
+  "next_page_url": null,
+  "prev_page_url": "./dist/animals6.json",
+  "data": [
+    {
+      "id": 13,
+      "name": "Ostrich"
+    },
+    {
+      "id": 14,
+      "name": "Pelican"
+    },
+    {
+      "id": 15,
+      "name": "Pigeon"
+    }
+  ]
+}

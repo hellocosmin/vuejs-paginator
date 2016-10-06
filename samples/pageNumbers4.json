@@ -1,0 +1,16 @@
+{
+  "current_page": 4,
+  "last_page": 7,
+  "next_page_url": "./dist/animals5.json",
+  "prev_page_url": "./dist/animals3.json",
+  "data": [
+    {
+      "id": 7,
+      "name": "Goat"
+    },
+    {
+      "id": 8,
+      "name": "Cockatoo"
+    }
+  ]
+}
