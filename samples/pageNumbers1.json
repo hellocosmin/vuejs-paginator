@@ -1,16 +1,28 @@
 {
   "current_page": 1,
   "last_page": 7,
-  "next_page_url": "./dist/animals2.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers2.json",
   "prev_page_url": null,
   "data": [
     {
       "id": 1,
-      "name": "Crocodile"
+      "name": "Agrajag"
     },
     {
       "id": 2,
-      "name": "Bobcat"
+      "name": "Mrs Alice Beeblebrox"
+    },
+    {
+      "id": 3,
+      "name": "The Allitnils"
+    },
+    {
+      "id": 4,
+      "name": "Almighty Bob"
+    },
+    {
+      "id": 5,
+      "name": "Anjie"
     }
   ]
 }

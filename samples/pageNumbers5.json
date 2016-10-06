@@ -1,16 +1,28 @@
 {
   "current_page": 5,
   "last_page": 7,
-  "next_page_url": "./dist/animals6.json",
-  "prev_page_url": "./dist/animals4.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers6.json",
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers4.json",
   "data": [
     {
-      "id": 9,
-      "name": "Duck"
+      "id": 21,
+      "name": "Dish of the Day"
     },
     {
-      "id": 10,
-      "name": "Frog"
+      "id": 22,
+      "name": "East River Creature"
+    },
+    {
+      "id": 23,
+      "name": "Eccentrica Gallumbits"
+    },
+    {
+      "id": 24,
+      "name": "Eddie"
+    },
+    {
+      "id": 25,
+      "name": "Effrafax of Wug"
     }
   ]
 }

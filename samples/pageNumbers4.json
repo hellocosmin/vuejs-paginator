@@ -1,16 +1,28 @@
 {
   "current_page": 4,
   "last_page": 7,
-  "next_page_url": "./dist/animals5.json",
-  "prev_page_url": "./dist/animals3.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers5.json",
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers3.json",
   "data": [
     {
-      "id": 7,
-      "name": "Goat"
+      "id": 16,
+      "name": "Constant Mown"
     },
     {
-      "id": 8,
-      "name": "Cockatoo"
+      "id": 17,
+      "name": "Dr. Dan Streetmentioner"
+    },
+    {
+      "id": 18,
+      "name": "Deep Thought"
+    },
+    {
+      "id": 19,
+      "name": "Dionah Carlinton Housney"
+    },
+    {
+      "id": 20,
+      "name": "Disaster Area's chief research accountant"
     }
   ]
 }

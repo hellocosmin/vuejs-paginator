@@ -2,19 +2,27 @@
   "current_page": 7,
   "last_page": 7,
   "next_page_url": null,
-  "prev_page_url": "./dist/animals6.json",
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers6.json",
   "data": [
     {
-      "id": 13,
-      "name": "Ostrich"
+      "id": 31,
+      "name": "Eric Bartlett"
     },
     {
-      "id": 14,
-      "name": "Pelican"
+      "id": 32,
+      "name": "Fenchurch"
     },
     {
-      "id": 15,
-      "name": "Pigeon"
+      "id": 33,
+      "name": "Frankie and Benjy Mouse"
+    },
+    {
+      "id": 34,
+      "name": "Frat Gadz"
+    },
+    {
+      "id": 35,
+      "name": "Frogstar Prisoner Relations Officer"
     }
   ]
 }

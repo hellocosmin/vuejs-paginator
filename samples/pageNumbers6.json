@@ -1,16 +1,28 @@
 {
   "current_page": 6,
   "last_page": 7,
-  "next_page_url": "./dist/animals7.json",
-  "prev_page_url": "./dist/animals5.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers7.json",
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers5.json",
   "data": [
     {
-      "id": 11,
-      "name": "Macaw"
+      "id": 26,
+      "name": "Elders of Krikkit"
     },
     {
-      "id": 12,
-      "name": "Parrot"
+      "id": 27,
+      "name": "Elvis Presley"
+    },
+    {
+      "id": 28,
+      "name": "Emily Saunders"
+    },
+    {
+      "id": 29,
+      "name": "Emperor of the Galaxy"
+    },
+    {
+      "id": 30,
+      "name": "Mrs Enid Kapelsen"
     }
   ]
 }

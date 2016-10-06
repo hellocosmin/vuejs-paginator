@@ -55,19 +55,14 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	var _VPaginator = __webpack_require__(2);
-	
+
 	var _VPaginator2 = _interopRequireDefault(_VPaginator);
-	
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var VuePaginator = _VPaginator2.default;
-	
-	VuePaginator.meta = {};
-	window.VuePaginator = VuePaginator;
-	
-	module.exports = VuePaginator;
+
+	module.exports = _VPaginator2.default;
 
 /***/ },
 /* 1 */,
@@ -75,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(3)
-	
+
 	if (module.exports.__esModule) module.exports = module.exports.default
 	;(typeof module.exports === "function" ? module.exports.options : module.exports).template = __webpack_require__(5)
 	if (false) {
@@ -99,18 +94,19 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	
+
 	var _utils = __webpack_require__(4);
-	
+
 	exports.default = {
 	  props: {
-	    resource: {
-	      required: true,
-	      twoWay: true
+	    page_numbers: {
+	      type: Boolean,
+	      required: false,
+	      default: false
 	    },
 	    resource_url: {
 	      type: String,
@@ -137,48 +133,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	        remote_last_page: 'last_page',
 	        remote_next_page_url: 'next_page_url',
 	        remote_prev_page_url: 'prev_page_url',
-	        previous_button_text: 'Previous',
-	        next_button_text: 'Next'
+	        previous_button_icon: this.page_numbers ? 'glyphicon glyphicon-chevron-left' : '',
+	        previous_button_text: this.page_numbers ? '' : 'Previous',
+	        next_button_icon: this.page_numbers ? 'glyphicon glyphicon-chevron-right' : '',
+	        next_button_text: this.page_numbers ? '' : 'Next'
 	      }
 	    };
 	  },
-	
-	  watch: {
-	    'resource_url': function resource_url() {
-	      this.fetchData();
+
+	  computed: {
+	    pages: function pages() {
+	      if (this.page_numbers) {
+	        return _utils.utils.createPageNumbers(this.resource_url, this.last_page);
+	      }
+	      return {};
 	    }
 	  },
 	  methods: {
 	    fetchData: function fetchData(pageUrl) {
 	      pageUrl = pageUrl || this.resource_url;
-	      this.$http.get(pageUrl, {}, { headers: this.config.headers }).then(function (response) {
-	        this.handleResponseData(response.data);
+	      var self = this;
+	      this.$http.get(pageUrl, { headers: this.config.headers }).then(function (response) {
+	        self.handleResponseData(response.data);
 	      }).catch(function (response) {
 	        console.log('Fetching data failed.', response);
 	      });
 	    },
 	    handleResponseData: function handleResponseData(response) {
 	      this.makePagination(response);
-	      this.$set('resource', _utils.utils.getNestedValue(response, this.config.remote_data)), this.setPaginationDataGlobally();
+	      var data = _utils.utils.getNestedValue(response, this.config.remote_data);
+	      this.$emit('update', data);
 	    },
 	    makePagination: function makePagination(data) {
 	      this.current_page = _utils.utils.getNestedValue(data, this.config.remote_current_page);
 	      this.last_page = _utils.utils.getNestedValue(data, this.config.remote_last_page);
-	      this.next_page_url = _utils.utils.getNestedValue(data, this.config.remote_next_page_url);
-	      this.prev_page_url = _utils.utils.getNestedValue(data, this.config.remote_prev_page_url);
-	    },
-	    setPaginationDataGlobally: function setPaginationDataGlobally() {
-	      try {
-	        VuePaginator.meta.current_page = this.current_page;
-	        VuePaginator.meta.last_page = this.last_page;
-	        VuePaginator.meta.next_page_url = this.next_page_url;
-	        VuePaginator.meta.prev_page_url = this.prev_page_url;
-	      } catch (err) {
-	        console.log('[VuePaginator] Global VuePaginator object not found. You will not have access to VuePaginator.meta data.');
-	      }
+	      this.next_page_url = this.current_page === this.last_page ? null : _utils.utils.getNestedValue(data, this.config.remote_next_page_url);
+	      this.prev_page_url = this.current_page === 1 ? null : _utils.utils.getNestedValue(data, this.config.remote_prev_page_url);
 	    },
 	    initConfig: function initConfig() {
-	      this.config = _utils.utils.merge_objects(this.config, this.options);
+	      this.config = _utils.utils.mergeObjects(this.config, this.options);
+	    }
+	  },
+	  watch: {
+	    resource_url: function resource_url() {
+	      this.fetchData();
 	    }
 	  },
 	  created: function created() {
@@ -190,11 +188,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	// <template>
 	//   <div class="v-paginator">
 	//     <button class="btn btn-default" @click="fetchData(prev_page_url)" :disabled="!prev_page_url">
-	//       {{config.previous_button_text}}
+	//       <span v-if="config.previous_button_icon && !page_numbers || !config.previous_button_text" :class="config.previous_button_icon"></span>
+	//       <span v-else>{{config.previous_button_text}}</span>
 	//     </button>
-	//     <span>Page {{current_page}} of {{last_page}}</span>
+	//     <span v-if="page_numbers">
+	//       <div class="btn-group" role="group">
+	//         <button
+	//           v-for="page in pages" @click="fetchData(page.url)"
+	//           class="btn btn-default" :class="{'btn-primary': current_page==page.value}">
+	//           {{page.value}}
+	//         </button>
+	//       </div>
+	//     </span>
+	//     <span v-else>Page {{current_page}} of {{last_page}}</span>
 	//     <button class="btn btn-default" @click="fetchData(next_page_url)" :disabled="!next_page_url">
-	//       {{config.next_button_text}}
+	//       <span v-if="config.next_button_icon && !page_numbers || !config.next_button_text" :class="config.next_button_icon"></span>
+	//       <span v-else>{{config.next_button_text}}</span>
 	//     </button>
 	//   </div>
 	// </template>
@@ -206,11 +215,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	'use strict';
-	
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	var merge_objects = function merge_objects(obj1, obj2) {
+	var mergeObjects = function mergeObjects(obj1, obj2) {
 	  var obj3 = {};
 	  for (var attrname in obj1) {
 	    obj3[attrname] = obj1[attrname];
@@ -220,7 +229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	  return obj3;
 	};
-	
+
 	var getNestedValue = function getNestedValue(obj, path) {
 	  var originalPath = path;
 	  path = path.split('.');
@@ -228,17 +237,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	  for (var i = 0; i < path.length; i++) {
 	    res = res[path[i]];
 	  }
-	  if (typeof res == 'undefined') console.log('[VuePaginator] Response doesn\'t contain key ' + originalPath + '!');
+	  if (typeof res === 'undefined') console.log('[VuePaginator] Response doesn\'t contain key ' + originalPath + '!');
 	  return res;
 	};
-	
-	var utils = exports.utils = { merge_objects: merge_objects, getNestedValue: getNestedValue };
+
+	var createPageNumbers = function createPageNumbers(resourceUrl, lastPage) {
+	  var ext = resourceUrl.match(/\.\D*$/) ? resourceUrl.match(/\.\D*$/)[0] : '';
+	  var rootUrl = resourceUrl.replace(new RegExp(ext + '$'), '').replace(/\d*$/, '');
+	  var allPages = {};
+	  for (var p = 1; p <= lastPage; p++) {
+	    allPages['page' + p] = { value: p, url: '' + rootUrl + p + ext };
+	  }
+	  return allPages;
+	};
+
+	var utils = exports.utils = { mergeObjects: mergeObjects, getNestedValue: getNestedValue, createPageNumbers: createPageNumbers };
 
 /***/ },
 /* 5 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"v-paginator\">\n    <button class=\"btn btn-default\" @click=\"fetchData(prev_page_url)\" :disabled=\"!prev_page_url\">\n      {{config.previous_button_text}}\n    </button>\n    <span>Page {{current_page}} of {{last_page}}</span>\n    <button class=\"btn btn-default\" @click=\"fetchData(next_page_url)\" :disabled=\"!next_page_url\">\n      {{config.next_button_text}}\n    </button>\n  </div>";
+	module.exports = "<div class=\"v-paginator\">\n    <button class=\"btn btn-default\" @click=\"fetchData(prev_page_url)\" :disabled=\"!prev_page_url\">\n      <span v-if=\"config.previous_button_icon && !page_numbers || !config.previous_button_text\" :class=\"config.previous_button_icon\"></span>\n      <span v-else>{{config.previous_button_text}}</span>\n    </button>\n    <span v-if=\"page_numbers\">\n      <div class=\"btn-group\" role=\"group\">\n        <button\n          v-for=\"page in pages\" @click=\"fetchData(page.url)\"\n          class=\"btn btn-default\" :class=\"{'btn-primary': current_page==page.value}\">\n          {{page.value}}\n        </button>\n      </div>\n    </span>\n    <span v-else>Page {{current_page}} of {{last_page}}</span>\n    <button class=\"btn btn-default\" @click=\"fetchData(next_page_url)\" :disabled=\"!next_page_url\">\n      <span v-if=\"config.next_button_icon && !page_numbers || !config.next_button_text\" :class=\"config.next_button_icon\"></span>\n      <span v-else>{{config.next_button_text}}</span>\n    </button>\n  </div>";
 
 /***/ }
 /******/ ])

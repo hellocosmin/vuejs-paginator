@@ -1,16 +1,28 @@
 {
   "current_page": 2,
   "last_page": 7,
-  "next_page_url": "./dist/animals3.json",
-  "prev_page_url": "./dist/animals1.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers3.json",
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers1.json",
   "data": [
     {
-      "id": 3,
-      "name": "Elephant"
+      "id": 6,
+      "name": "Arcturan Megafreighter crew"
     },
     {
-      "id": 4,
-      "name": "bandicoot"
+      "id": 7,
+      "name": "Aseed"
+    },
+    {
+      "id": 8,
+      "name": "Barman of the Horse and Groom"
+    },
+    {
+      "id": 9,
+      "name": "Barman in Old Pink Dog Bar"
+    },
+    {
+      "id": 10,
+      "name": "Barman in the Domain of the King"
     }
   ]
 }
