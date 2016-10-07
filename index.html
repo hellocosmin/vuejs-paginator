@@ -86,7 +86,7 @@
                     Navigate.
                   </h3>
                   <span class="glyphicon glyphicon-hand-right icon-left animated shake"></span>
-                  <v-paginator :options="options" @update="updateResource" resource_url="https://hootlex.github.io/vuejs-paginator/samples/animals2.json"></v-paginator>
+                  <v-paginator :options="options" @update="updateAnimals" resource_url="https://hootlex.github.io/vuejs-paginator/samples/animals2.json"></v-paginator>
                   <h3>
                     <code>animals</code> variable contents:
                   </h3>
@@ -95,23 +95,23 @@
               </div>
               <div class="bs-example">
                 <h3>
-                  List of minor The Hitchhiker's Guide to the Galaxy characters from <a href="https://en.wikipedia.org/wiki/List_of_minor_The_Hitchhiker%27s_Guide_to_the_Galaxy_characters">Wikipedia</a>, with page numbers.
+                  List of some of minor The Hitchhiker's Guide to the Galaxy characters from a remote source, with page numbers.
                 </h3>
                 <div id="live-example">
                   <ul class="list-group">
-                    <li class="list-group-item" v-for="animal in animals">
-                      {{ animal.name }}
+                    <li class="list-group-item" v-for="char in characters">
+                      {{ char.name }}
                     </li>
                   </ul>
                   <h3>
                     Navigate.
                   </h3>
                   <span class="glyphicon glyphicon-hand-right icon-left animated shake"></span>
-                  <v-paginator page_numbers :options="options" @update="updateResource" resource_url="https://israelss.github.io/vuejs-paginator/samples/pageNumbers4.json"></v-paginator>
+                  <v-paginator page_numbers :options="options" @update="updateChars" resource_url="https://israelss.github.io/vuejs-paginator/samples/pageNumbers4.json"></v-paginator>
                   <h3>
-                    <code>animals</code> variable contents:
+                    <code>characters</code> variable contents:
                   </h3>
-                  <pre>{{ animals }}</pre>
+                  <pre>{{ characters }}</pre>
                 </div>
               </div>
             </div>
