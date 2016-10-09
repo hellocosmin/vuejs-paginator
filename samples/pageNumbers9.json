@@ -1,0 +1,28 @@
+{
+  "current_page": 9,
+  "last_page": 10,
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers8.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers10.json",
+  "data": [
+    {
+      "id": 41,
+      "name": "Girl with a Master's degree"
+    },
+    {
+      "id": 42,
+      "name": "God"
+    },
+    {
+      "id": 43,
+      "name": "Gogrilla Mincefriend"
+    },
+    {
+      "id": 44,
+      "name": "Agda and Mella"
+    },
+    {
+      "id": 45,
+      "name": "Captain"
+    }
+  ]
+}

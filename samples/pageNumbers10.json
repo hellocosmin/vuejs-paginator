@@ -1,0 +1,28 @@
+{
+  "current_page": 10,
+  "last_page": 10,
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers9.json",
+  "next_page_url": null,
+  "data": [
+    {
+      "id": 46,
+      "name": "Great Circling Poets of Arium"
+    },
+    {
+      "id": 47,
+      "name": "Hairdresser"
+    },
+    {
+      "id": 48,
+      "name": "Management consultant"
+    },
+    {
+      "id": 49,
+      "name": "Marketing girl"
+    },
+    {
+      "id": 50,
+      "name": "Number One"
+    }
+  ]
+}

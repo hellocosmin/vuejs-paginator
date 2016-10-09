@@ -1,6 +1,8 @@
 {
   "current_page": 4,
-  "last_page": 7,
+  "last_page": 10,
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers3.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers5.json",
   "data": [
     {
       "id": 16,

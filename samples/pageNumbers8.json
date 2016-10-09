@@ -1,0 +1,28 @@
+{
+  "current_page": 8,
+  "last_page": 10,
+  "prev_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers7.json",
+  "next_page_url": "https://israelss.github.io/vuejs-paginator/samples/pageNumbers9.json",
+  "data": [
+    {
+      "id": 36,
+      "name": "Gag Halfrunt"
+    },
+    {
+      "id": 37,
+      "name": "Gail Andrews"
+    },
+    {
+      "id": 38,
+      "name": "Gargravarr"
+    },
+    {
+      "id": 39,
+      "name": "Garkbit"
+    },
+    {
+      "id": 40,
+      "name": "Genghis Temüjin Khan"
+    }
+  ]
+}
