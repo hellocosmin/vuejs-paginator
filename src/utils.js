@@ -16,14 +16,4 @@ const getNestedValue = (obj, path) => {
   return res
 }
 
-const createPageNumbers = (resourceUrl, lastPage) => {
-  let ext = resourceUrl.match(/\.\D*$/) ? resourceUrl.match(/\.\D*$/)[0] : ''
-  let rootUrl = resourceUrl.replace(new RegExp(`${ext}$`), '').replace(/\d*$/, '')
-  let allPages = {}
-  for (let p = 1; p <= lastPage; p++) {
-    allPages[`page${p}`] = { value: p, url: `${rootUrl}${p}${ext}` }
-  }
-  return allPages
-}
-
-export const utils = { mergeObjects, getNestedValue, createPageNumbers }
+export const utils = { mergeObjects, getNestedValue }
